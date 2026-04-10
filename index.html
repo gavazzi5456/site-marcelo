@@ -1,0 +1,1098 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Horizonte Verde Travel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+<style>
+:root {
+--verde-escuro: #1a4a2e;
+--verde-medio: #2d6e47;
+--verde-claro: #4caf50;
+--verde-mint: #a8d5b5;
+--verde-bg: #f0f7f2;
+--branco: #ffffff;
+--creme: #faf9f6;
+--cinza-texto: #3a3a3a;
+--cinza-leve: #6b7280;
+--sombra: rgba(26,74,46,0.15);
+--fonte-titulo: 'Playfair Display', serif;
+--fonte-corpo: 'DM Sans', sans-serif;
+--pascoa-laranja: #c8601a;
+--pascoa-laranja-claro: #faeeda;
+--pascoa-laranja-medio: #f59e0b;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--fonte-corpo); background: var(--creme); color: var(--cinza-texto); min-height: 100vh; display: flex; flex-direction: column; }
+
+/* TOPBAR */
+.topbar { background: var(--verde-escuro); color: var(--verde-mint); font-size: 0.78rem; font-weight: 500; letter-spacing: 0.08em; text-align: center; padding: 7px 20px; }
+
+/* HEADER */
+header { background: var(--branco); box-shadow: 0 2px 20px var(--sombra); position: sticky; top: 0; z-index: 200; }
+.nav-wrapper { max-width: 1100px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 72px; }
+.logo { display: flex; align-items: center; gap: 12px; cursor: pointer; flex-shrink: 0; }
+.logo-icon { width: 44px; height: 44px; background: linear-gradient(135deg, var(--verde-escuro), var(--verde-claro)); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; }
+.logo-text { font-family: var(--fonte-titulo); font-size: 1.1rem; font-weight: 700; color: var(--verde-escuro); line-height: 1.2; }
+.logo-text span { display: block; font-family: var(--fonte-corpo); font-size: 0.66rem; font-weight: 400; color: var(--verde-claro); letter-spacing: 0.12em; text-transform: uppercase; }
+nav { display: flex; align-items: center; gap: 4px; flex-wrap: wrap; }
+.nav-btn { background: none; border: none; font-family: var(--fonte-corpo); font-size: 0.86rem; font-weight: 500; color: var(--cinza-leve); padding: 8px 12px; border-radius: 8px; cursor: pointer; transition: all 0.22s; white-space: nowrap; }
+.nav-btn:hover { color: var(--verde-escuro); background: var(--verde-bg); }
+.nav-btn.active { color: var(--branco); background: var(--verde-escuro); }
+.nav-btn.pascoa-nav { color: var(--pascoa-laranja); font-weight: 600; }
+.nav-btn.pascoa-nav:hover { background: var(--pascoa-laranja-claro); color: var(--pascoa-laranja); }
+.nav-btn.pascoa-nav.active { background: var(--pascoa-laranja); color: var(--branco); }
+
+/* SPA */
+.page { display: none; flex: 1; animation: fadeUp 0.35s ease; }
+.page.active { display: block; }
+@keyframes fadeUp { from { opacity:0; transform:translateY(16px); } to { opacity:1; transform:translateY(0); } }
+
+/* HERO */
+.hero { background: linear-gradient(160deg, var(--verde-escuro) 0%, var(--verde-medio) 60%, var(--verde-claro) 100%); padding: 90px 24px 80px; text-align: center; position: relative; overflow: hidden; }
+.hero::before { content:''; position:absolute; inset:0; background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/svg%3E"); }
+.hero-inner { position:relative; max-width:700px; margin:0 auto; }
+.hero-badge { display:inline-block; background:rgba(255,255,255,0.15); color:var(--verde-mint); font-size:0.72rem; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; padding:6px 16px; border-radius:50px; border:1px solid rgba(168,213,181,0.3); margin-bottom:22px; }
+.hero h1 { font-family:var(--fonte-titulo); font-size:clamp(2.4rem,6vw,4rem); font-weight:900; color:var(--branco); line-height:1.1; margin-bottom:14px; text-shadow:0 2px 20px rgba(0,0,0,0.2); }
+.hero h1 em { font-style:normal; color:var(--verde-mint); }
+.hero-slogan { font-size:1.1rem; color:rgba(255,255,255,0.82); font-weight:300; font-style:italic; margin-bottom:36px; }
+.hero-cta { display:inline-block; background:var(--branco); color:var(--verde-escuro); font-family:var(--fonte-corpo); font-weight:600; font-size:0.9rem; padding:14px 32px; border-radius:50px; border:none; cursor:pointer; transition:all 0.25s; box-shadow:0 6px 24px rgba(0,0,0,0.18); }
+.hero-cta:hover { background:var(--verde-mint); transform:translateY(-2px); }
+
+/* BANNER PÁSCOA NO HERO (início) */
+.pascoa-banner-strip {
+  background: linear-gradient(135deg, #b85c1a 0%, #d4782a 50%, #c8601a 100%);
+  padding: 18px 24px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: filter 0.22s;
+}
+.pascoa-banner-strip:hover { filter: brightness(1.08); }
+.pascoa-banner-strip::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Ccircle cx='20' cy='20' r='8'/%3E%3C/g%3E%3C/svg%3E");
+}
+.pascoa-strip-inner { position: relative; display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap; }
+.pascoa-strip-badge { background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.35); color: #faeeda; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; padding: 4px 12px; border-radius: 50px; }
+.pascoa-strip-text { color: #fff; font-size: 0.95rem; font-weight: 500; }
+.pascoa-strip-text strong { color: #faeeda; }
+.pascoa-strip-cta { background: #fff; color: #b85c1a; font-size: 0.8rem; font-weight: 700; padding: 7px 18px; border-radius: 50px; white-space: nowrap; }
+
+/* PILARES */
+.section-container { max-width:1100px; margin:0 auto; padding:64px 24px; }
+.section-label { font-size:0.72rem; font-weight:600; letter-spacing:0.16em; text-transform:uppercase; color:var(--verde-claro); margin-bottom:10px; }
+.section-title { font-family:var(--fonte-titulo); font-size:clamp(1.6rem,3.5vw,2.4rem); font-weight:700; color:var(--verde-escuro); line-height:1.25; margin-bottom:16px; }
+.section-subtitle { font-size:1rem; color:var(--cinza-leve); max-width:560px; line-height:1.7; margin-bottom:48px; }
+.pillar-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:24px; }
+.pillar-card { background:var(--branco); border-radius:18px; padding:32px 24px; box-shadow:0 4px 20px var(--sombra); border:1px solid rgba(76,175,80,0.1); transition:transform 0.22s,box-shadow 0.22s; }
+.pillar-card:hover { transform:translateY(-4px); box-shadow:0 10px 36px var(--sombra); }
+.pillar-icon { width:52px; height:52px; background:var(--verde-bg); border-radius:14px; display:flex; align-items:center; justify-content:center; font-size:1.5rem; margin-bottom:18px; }
+.pillar-card h3 { font-family:var(--fonte-titulo); font-size:1.1rem; font-weight:700; color:var(--verde-escuro); margin-bottom:8px; }
+.pillar-card p { font-size:0.88rem; color:var(--cinza-leve); line-height:1.65; }
+.mission-banner { background:var(--verde-escuro); padding:56px 24px; text-align:center; }
+.mission-banner p { font-family:var(--fonte-titulo); font-size:clamp(1.1rem,2.5vw,1.5rem); color:var(--branco); max-width:720px; margin:0 auto; line-height:1.7; font-style:italic; }
+.mission-banner strong { color:var(--verde-mint); font-style:normal; }
+
+/* PACKAGES */
+.packages-page { background:var(--verde-bg); min-height:60vh; }
+.packages-header { background:linear-gradient(135deg,var(--verde-escuro),var(--verde-medio)); padding:56px 24px 48px; text-align:center; }
+.packages-header .section-label { color:var(--verde-mint); }
+.packages-header .section-title { color:var(--branco); margin-bottom:6px; }
+.packages-header p { color:rgba(255,255,255,0.75); font-size:0.95rem; }
+.packages-body { max-width:1100px; margin:0 auto; padding:48px 24px 64px; }
+.table-wrapper { background:var(--branco); border-radius:20px; box-shadow:0 6px 30px var(--sombra); overflow:hidden; border:1px solid rgba(76,175,80,0.12); }
+.table-scroll { overflow-x:auto; }
+table { width:100%; border-collapse:collapse; }
+thead tr { background:var(--verde-escuro); }
+thead th { padding:16px 20px; text-align:left; font-size:0.75rem; font-weight:600; color:var(--verde-mint); letter-spacing:0.1em; text-transform:uppercase; }
+tbody tr { border-bottom:1px solid rgba(76,175,80,0.1); transition:background 0.18s; }
+tbody tr:last-child { border-bottom:none; }
+tbody tr:hover { background:var(--verde-bg); }
+tbody td { padding:18px 20px; font-size:0.9rem; color:var(--cinza-texto); vertical-align:middle; }
+.td-destino { font-family:var(--fonte-titulo); font-weight:700; color:var(--verde-escuro) !important; font-size:1rem !important; }
+.destino-link { display:inline-flex; align-items:center; gap:8px; cursor:pointer; color:inherit; padding:4px 0; border-bottom:2px solid transparent; transition:all 0.2s; }
+.destino-link:hover { color:var(--verde-claro); border-bottom-color:var(--verde-claro); }
+.destino-link .arrow { font-size:0.8rem; opacity:0; transition:opacity 0.2s,transform 0.2s; transform:translateX(-4px); }
+.destino-link:hover .arrow { opacity:1; transform:translateX(2px); }
+.td-hotel { font-weight:500; }
+.estrelas { color:#f59e0b; font-size:0.85rem; letter-spacing:1px; }
+.tour-tag { display:inline-block; background:var(--verde-bg); color:var(--verde-medio); font-size:0.78rem; font-weight:600; padding:4px 10px; border-radius:50px; border:1px solid rgba(45,110,71,0.2); }
+.td-preco { font-weight:700; font-size:1.05rem !important; color:var(--verde-escuro) !important; }
+
+/* DETALHE DESTINO */
+#page-destino { background:var(--creme); }
+.destino-back-bar { background:var(--verde-escuro); padding:14px 28px; display:flex; align-items:center; }
+.back-btn { background:none; border:none; color:var(--verde-mint); font-family:var(--fonte-corpo); font-size:0.9rem; font-weight:500; cursor:pointer; display:flex; align-items:center; gap:8px; transition:color 0.2s; }
+.back-btn:hover { color:var(--branco); }
+.destino-hero { position:relative; height:380px; overflow:hidden; }
+.destino-hero img { width:100%; height:100%; object-fit:cover; display:block; }
+.destino-hero-overlay { position:absolute; inset:0; background:linear-gradient(to top, rgba(10,30,15,0.85) 0%, rgba(10,30,15,0.2) 55%, transparent 100%); display:flex; flex-direction:column; justify-content:flex-end; padding:40px 40px; }
+.destino-hero-overlay h2 { font-family:var(--fonte-titulo); font-size:clamp(2rem,5vw,3.2rem); font-weight:900; color:var(--branco); line-height:1.1; margin-bottom:8px; }
+.destino-hero-overlay p { color:var(--verde-mint); font-size:1rem; font-weight:300; }
+.destino-body { max-width:1000px; margin:0 auto; padding:52px 24px 72px; }
+.destino-intro { font-size:1.05rem; color:var(--cinza-leve); line-height:1.8; max-width:700px; margin-bottom:48px; }
+.atracao-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:28px; margin-top:18px; }
+.atracao-card { background:var(--branco); border-radius:20px; overflow:hidden; box-shadow:0 6px 28px var(--sombra); border:1px solid rgba(76,175,80,0.1); transition:transform 0.22s,box-shadow 0.22s; }
+.atracao-card:hover { transform:translateY(-5px); box-shadow:0 14px 40px var(--sombra); }
+.atracao-img { width:100%; height:210px; object-fit:cover; display:block; background:#a8d5b5; }
+.atracao-body { padding:24px 24px 28px; }
+.atracao-tag { display:inline-block; background:var(--verde-bg); color:var(--verde-medio); font-size:0.7rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; padding:3px 10px; border-radius:50px; margin-bottom:10px; }
+.atracao-body h3 { font-family:var(--fonte-titulo); font-size:1.25rem; font-weight:700; color:var(--verde-escuro); margin-bottom:10px; }
+.atracao-body p { font-size:0.88rem; color:var(--cinza-leve); line-height:1.7; }
+.destino-info-box { background:var(--verde-escuro); border-radius:20px; padding:32px 36px; color:var(--branco); margin-top:48px; display:flex; flex-wrap:wrap; gap:28px; align-items:center; justify-content:space-between; }
+.dib-item { display:flex; flex-direction:column; gap:4px; }
+.dib-label { font-size:0.7rem; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:var(--verde-mint); }
+.dib-value { font-size:1.05rem; font-weight:700; color:var(--branco); }
+.dib-cta { background:var(--verde-claro); color:var(--branco); border:none; font-family:var(--fonte-corpo); font-weight:700; font-size:0.9rem; padding:14px 28px; border-radius:50px; cursor:pointer; transition:background 0.22s,transform 0.22s; white-space:nowrap; }
+.dib-cta:hover { background:var(--verde-mint); color:var(--verde-escuro); transform:translateY(-2px); }
+
+/* TRANSLADOS */
+.translados-header { background:linear-gradient(135deg,var(--verde-escuro),var(--verde-medio)); padding:56px 24px 48px; text-align:center; }
+.translados-header .section-label { color:var(--verde-mint); }
+.translados-header .section-title { color:var(--branco); }
+.translados-header p { color:rgba(255,255,255,0.75); font-size:0.95rem; }
+.translados-body { max-width:1000px; margin:0 auto; padding:56px 24px 72px; display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:28px; }
+.translado-card { background:var(--branco); border-radius:20px; padding:36px 28px; box-shadow:0 6px 28px var(--sombra); border:1px solid rgba(76,175,80,0.12); transition:transform 0.22s; }
+.translado-card:hover { transform:translateY(-4px); }
+.translado-icon-wrap { width:62px; height:62px; background:linear-gradient(135deg,var(--verde-escuro),var(--verde-medio)); border-radius:18px; display:flex; align-items:center; justify-content:center; font-size:1.8rem; margin-bottom:22px; box-shadow:0 6px 20px rgba(26,74,46,0.25); }
+.translado-card h3 { font-family:var(--fonte-titulo); font-size:1.25rem; font-weight:700; color:var(--verde-escuro); margin-bottom:16px; }
+.translado-card ul { list-style:none; display:flex; flex-direction:column; gap:10px; }
+.translado-card li { display:flex; align-items:flex-start; gap:10px; font-size:0.9rem; color:var(--cinza-leve); line-height:1.5; }
+.translado-card li::before { content:'✦'; color:var(--verde-claro); font-size:0.65rem; margin-top:4px; flex-shrink:0; }
+
+/* CONTATO */
+.contato-page { background:var(--verde-bg); min-height:60vh; }
+.contato-header { background:linear-gradient(135deg,var(--verde-escuro),var(--verde-medio)); padding:56px 24px 48px; text-align:center; }
+.contato-header .section-label { color:var(--verde-mint); }
+.contato-header .section-title { color:var(--branco); }
+.contato-header p { color:rgba(255,255,255,0.75); font-size:0.95rem; }
+.contato-body { max-width:800px; margin:0 auto; padding:56px 24px 36px; display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:24px; }
+.contato-card { background:var(--branco); border-radius:20px; padding:32px 24px; box-shadow:0 6px 28px var(--sombra); border:1px solid rgba(76,175,80,0.12); text-align:center; transition:transform 0.22s; }
+.contato-card:hover { transform:translateY(-4px); }
+.contato-card-icon { width:58px; height:58px; background:var(--verde-bg); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:1.5rem; margin:0 auto 18px; border:2px solid rgba(76,175,80,0.25); }
+.contato-card h3 { font-family:var(--fonte-titulo); font-size:1rem; font-weight:700; color:var(--verde-escuro); margin-bottom:8px; }
+.contato-card p, .contato-card a { font-size:0.9rem; color:var(--cinza-leve); text-decoration:none; word-break:break-all; }
+.contato-card a:hover { color:var(--verde-claro); }
+.contato-aviso { max-width:800px; margin:0 auto 60px; padding:0 24px; }
+.contato-aviso-inner { background:var(--verde-escuro); border-radius:18px; padding:30px 32px; color:var(--branco); text-align:center; }
+.contato-aviso-inner h3 { font-family:var(--fonte-titulo); font-size:1.2rem; margin-bottom:8px; }
+.contato-aviso-inner p { font-size:0.9rem; color:var(--verde-mint); line-height:1.6; }
+
+/* ═══════════════════════════════════════
+   PÁSCOA PAGE — ESTILOS
+═══════════════════════════════════════ */
+#page-pascoa { background: var(--creme); }
+
+/* Hero Páscoa */
+.pascoa-hero {
+  background: linear-gradient(150deg, #1a3a10 0%, #2d5c1a 45%, #3b6d11 100%);
+  padding: 80px 24px 72px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.pascoa-hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='40' cy='40' r='20'/%3E%3Ccircle cx='0' cy='0' r='12'/%3E%3Ccircle cx='80' cy='80' r='12'/%3E%3C/g%3E%3C/svg%3E");
+}
+.pascoa-hero-inner { position: relative; max-width: 720px; margin: 0 auto; }
+.pascoa-edicao-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(200,96,26,0.25);
+  border: 1px solid rgba(245,158,11,0.4);
+  color: #fcd88a;
+  font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+  padding: 6px 16px; border-radius: 50px;
+  margin-bottom: 20px;
+}
+.pascoa-edicao-badge span { width: 6px; height: 6px; border-radius: 50%; background: #f59e0b; display: inline-block; }
+.pascoa-hero h1 {
+  font-family: var(--fonte-titulo);
+  font-size: clamp(2.2rem, 5.5vw, 3.8rem);
+  font-weight: 900;
+  color: var(--branco);
+  line-height: 1.1;
+  margin-bottom: 10px;
+  text-shadow: 0 2px 24px rgba(0,0,0,0.25);
+}
+.pascoa-hero h1 em { font-style: italic; color: #a8d5b5; }
+.pascoa-hero-sub {
+  font-size: 1.05rem;
+  color: rgba(255,255,255,0.78);
+  font-weight: 300;
+  line-height: 1.7;
+  margin-bottom: 10px;
+  max-width: 580px;
+  margin-left: auto; margin-right: auto;
+}
+.pascoa-destino-pill {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: rgba(255,255,255,0.85);
+  font-size: 0.85rem; font-weight: 500;
+  padding: 8px 20px; border-radius: 50px;
+  margin-bottom: 32px;
+}
+.pascoa-hero-pills {
+  display: flex; justify-content: center; gap: 10px; flex-wrap: wrap;
+  margin-bottom: 36px;
+}
+.p-pill {
+  display: flex; align-items: center; gap: 6px;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.18);
+  color: rgba(255,255,255,0.88);
+  font-size: 0.8rem; font-weight: 500;
+  padding: 6px 14px; border-radius: 50px;
+}
+.p-pill-dot { width: 6px; height: 6px; border-radius: 50%; background: #97c459; flex-shrink: 0; }
+.pascoa-hero-cta-row {
+  display: flex; align-items: center; justify-content: center;
+  gap: 20px; flex-wrap: wrap;
+}
+.pascoa-btn-hero {
+  background: #c8601a;
+  color: var(--branco);
+  font-family: var(--fonte-corpo); font-weight: 700; font-size: 0.95rem;
+  padding: 15px 36px; border-radius: 50px; border: none; cursor: pointer;
+  box-shadow: 0 6px 24px rgba(200,96,26,0.45);
+  transition: all 0.25s;
+}
+.pascoa-btn-hero:hover { background: #e07030; transform: translateY(-2px); box-shadow: 0 10px 32px rgba(200,96,26,0.5); }
+.pascoa-hero-preco { text-align: left; }
+.pascoa-hero-preco-label { font-size: 0.68rem; color: rgba(255,255,255,0.55); text-transform: uppercase; letter-spacing: 0.1em; }
+.pascoa-hero-preco-val { font-size: 1.6rem; font-weight: 700; color: var(--branco); line-height: 1.1; }
+.pascoa-hero-preco-val small { font-size: 0.8rem; font-weight: 400; color: rgba(255,255,255,0.6); }
+
+/* URGÊNCIA */
+.urgencia-bar {
+  background: #fff8ec;
+  border-bottom: 1px solid #fcd88a;
+  padding: 12px 24px;
+  text-align: center;
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  flex-wrap: wrap;
+}
+.urgencia-bar-text { font-size: 0.88rem; color: #7c4a0a; }
+.urgencia-bar-text strong { color: #b85c1a; }
+.urgencia-vagas {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: #b85c1a; color: #fff;
+  font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+  padding: 4px 12px; border-radius: 50px;
+}
+
+/* CORPO DA PÁGINA PÁSCOA */
+.pascoa-body { max-width: 1100px; margin: 0 auto; padding: 64px 24px 80px; }
+
+/* Seção destino */
+.pascoa-section-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #c8601a; margin-bottom: 8px; }
+.pascoa-section-title { font-family: var(--fonte-titulo); font-size: clamp(1.5rem,3vw,2.2rem); font-weight: 700; color: var(--verde-escuro); line-height: 1.25; margin-bottom: 16px; }
+.pascoa-section-divider { border: none; border-top: 1px solid rgba(76,175,80,0.15); margin: 52px 0; }
+
+/* Grid info destino */
+.pascoa-destino-texto { font-size: 1rem; color: var(--cinza-leve); line-height: 1.8; max-width: 680px; margin-bottom: 32px; }
+.pascoa-info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-bottom: 52px;
+}
+.pascoa-info-card {
+  background: var(--branco);
+  border: 1px solid rgba(76,175,80,0.12);
+  border-radius: 16px;
+  padding: 22px 20px;
+  box-shadow: 0 4px 18px var(--sombra);
+  transition: transform 0.2s;
+}
+.pascoa-info-card:hover { transform: translateY(-3px); }
+.pascoa-info-icon { font-size: 1.6rem; margin-bottom: 10px; display: block; }
+.pascoa-info-card-title { font-size: 0.9rem; font-weight: 600; color: var(--verde-escuro); margin-bottom: 4px; }
+.pascoa-info-card-desc { font-size: 0.82rem; color: var(--cinza-leve); line-height: 1.55; }
+
+/* Datas */
+.pascoa-datas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+  margin-bottom: 52px;
+}
+.pascoa-data-card {
+  background: var(--branco);
+  border: 1.5px solid rgba(76,175,80,0.15);
+  border-radius: 16px;
+  padding: 24px 22px;
+  box-shadow: 0 4px 18px var(--sombra);
+  position: relative;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.pascoa-data-card:hover { transform: translateY(-3px); box-shadow: 0 10px 30px var(--sombra); }
+.pascoa-data-card.destaque { border-color: #c8601a; border-width: 2px; }
+.pascoa-data-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px; }
+.pascoa-data-nome { font-size: 0.82rem; font-weight: 600; color: var(--cinza-leve); text-transform: uppercase; letter-spacing: 0.08em; }
+.pascoa-data-badge-pop {
+  background: #fff8ec; color: #b85c1a;
+  font-size: 0.68rem; font-weight: 700; padding: 3px 10px; border-radius: 50px;
+  border: 1px solid #fcd88a;
+}
+.pascoa-data-datas { font-size: 1.1rem; font-weight: 700; color: var(--verde-escuro); margin-bottom: 4px; }
+.pascoa-data-periodo { font-size: 0.82rem; color: var(--cinza-leve); margin-bottom: 10px; }
+.pascoa-data-vagas { font-size: 0.82rem; font-weight: 600; color: #b85c1a; }
+.pascoa-data-vagas-ok { color: var(--cinza-leve); font-weight: 400; }
+
+/* Incluso */
+.pascoa-incluso-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 52px;
+}
+@media(max-width:520px){ .pascoa-incluso-grid { grid-template-columns: 1fr; } }
+.pascoa-incluso-item {
+  display: flex; align-items: flex-start; gap: 10px;
+  font-size: 0.9rem; color: var(--cinza-texto); line-height: 1.45;
+  background: var(--branco);
+  border: 1px solid rgba(76,175,80,0.1);
+  border-radius: 10px;
+  padding: 12px 14px;
+}
+.pascoa-check {
+  width: 20px; height: 20px; border-radius: 50%;
+  background: var(--verde-bg); border: 1.5px solid var(--verde-claro);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--verde-medio); font-size: 0.65rem; font-weight: 700;
+  flex-shrink: 0; margin-top: 1px;
+}
+
+/* Preço */
+.pascoa-preco-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 52px;
+  align-items: start;
+}
+@media(max-width:640px){ .pascoa-preco-wrapper { grid-template-columns: 1fr; } }
+.pascoa-preco-card {
+  background: var(--branco);
+  border: 1px solid rgba(76,175,80,0.15);
+  border-radius: 20px;
+  padding: 32px 28px;
+  box-shadow: 0 6px 28px var(--sombra);
+}
+.pascoa-preco-main { display: flex; align-items: baseline; gap: 8px; margin-bottom: 4px; }
+.pascoa-preco-num { font-size: 2.4rem; font-weight: 700; color: var(--verde-escuro); line-height: 1; }
+.pascoa-preco-suffix { font-size: 0.9rem; color: var(--cinza-leve); }
+.pascoa-preco-detalhe { font-size: 0.82rem; color: var(--cinza-leve); margin-bottom: 20px; line-height: 1.6; }
+.pascoa-parcelas {
+  display: flex; align-items: center; gap: 10px;
+  background: var(--verde-bg);
+  border: 1px solid rgba(76,175,80,0.2);
+  border-radius: 10px;
+  padding: 12px 14px;
+  margin-bottom: 12px;
+  font-size: 0.88rem; color: var(--cinza-texto);
+}
+.pascoa-parcelas strong { color: var(--verde-medio); }
+.pascoa-pix {
+  font-size: 0.82rem; color: var(--cinza-leve);
+  background: var(--verde-bg);
+  border: 1px solid rgba(76,175,80,0.15);
+  border-radius: 10px; padding: 10px 14px;
+  line-height: 1.5; margin-bottom: 12px;
+}
+.pascoa-pix strong { color: var(--verde-medio); }
+.pascoa-sinal {
+  font-size: 0.82rem; color: var(--cinza-leve);
+  padding: 0 4px; line-height: 1.5;
+}
+
+/* CTA card lateral */
+.pascoa-cta-card {
+  background: linear-gradient(145deg, #1a3a10, #2d5c1a);
+  border-radius: 20px;
+  padding: 32px 28px;
+  display: flex; flex-direction: column; gap: 16px;
+  box-shadow: 0 8px 32px rgba(26,74,46,0.3);
+}
+.pascoa-urgencia-cta {
+  background: rgba(200,96,26,0.2);
+  border: 1px solid rgba(245,158,11,0.35);
+  border-radius: 10px;
+  padding: 12px 14px;
+  display: flex; gap: 10px; align-items: flex-start;
+}
+.pascoa-urgencia-cta-text { font-size: 0.82rem; color: #fcd88a; line-height: 1.5; }
+.pascoa-urgencia-cta-text strong { color: #fff; }
+.pascoa-btn-reservar {
+  background: #c8601a;
+  color: var(--branco);
+  font-family: var(--fonte-corpo); font-weight: 700; font-size: 1rem;
+  padding: 16px 24px; border-radius: 50px; border: none; cursor: pointer;
+  text-align: center;
+  transition: all 0.25s;
+  box-shadow: 0 4px 20px rgba(200,96,26,0.4);
+}
+.pascoa-btn-reservar:hover { background: #e07030; transform: translateY(-2px); }
+.pascoa-btn-consultor {
+  background: transparent;
+  color: rgba(255,255,255,0.7);
+  font-family: var(--fonte-corpo); font-size: 0.85rem; font-weight: 500;
+  padding: 12px 24px; border-radius: 50px;
+  border: 1px solid rgba(255,255,255,0.2);
+  cursor: pointer; text-align: center;
+  transition: all 0.22s;
+}
+.pascoa-btn-consultor:hover { background: rgba(255,255,255,0.08); color: var(--branco); }
+.pascoa-cta-info { font-size: 0.75rem; color: rgba(255,255,255,0.45); text-align: center; line-height: 1.5; }
+
+/* Diferenciais */
+.pascoa-dif-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+  margin-bottom: 52px;
+}
+.pascoa-dif-card {
+  background: var(--branco);
+  border: 1px solid rgba(76,175,80,0.12);
+  border-radius: 14px;
+  padding: 20px 18px;
+  display: flex; gap: 14px; align-items: flex-start;
+  box-shadow: 0 3px 14px var(--sombra);
+  transition: transform 0.2s;
+}
+.pascoa-dif-card:hover { transform: translateY(-2px); }
+.pascoa-dif-icon { font-size: 1.5rem; flex-shrink: 0; margin-top: 2px; }
+.pascoa-dif-title { font-size: 0.9rem; font-weight: 600; color: var(--verde-escuro); margin-bottom: 4px; }
+.pascoa-dif-desc { font-size: 0.82rem; color: var(--cinza-leve); line-height: 1.5; }
+
+/* CTA final */
+.pascoa-cta-final {
+  background: linear-gradient(135deg, #c8601a 0%, #d4782a 100%);
+  border-radius: 24px;
+  padding: 52px 40px;
+  text-align: center;
+  box-shadow: 0 10px 40px rgba(200,96,26,0.3);
+  position: relative; overflow: hidden;
+}
+.pascoa-cta-final::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='14'/%3E%3C/g%3E%3C/svg%3E");
+}
+.pascoa-cta-final-inner { position: relative; }
+.pascoa-cta-final h2 { font-family: var(--fonte-titulo); font-size: clamp(1.4rem, 3vw, 2rem); color: var(--branco); margin-bottom: 12px; font-weight: 900; }
+.pascoa-cta-final p { font-size: 0.95rem; color: rgba(255,255,255,0.82); max-width: 500px; margin: 0 auto 28px; line-height: 1.7; }
+.pascoa-cta-final-btns { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
+.pascoa-cta-btn-white {
+  background: var(--branco); color: #c8601a;
+  font-family: var(--fonte-corpo); font-weight: 700; font-size: 0.95rem;
+  padding: 14px 32px; border-radius: 50px; border: none; cursor: pointer;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.15);
+  transition: all 0.22s;
+}
+.pascoa-cta-btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,0,0,0.2); }
+.pascoa-cta-btn-outline {
+  background: transparent; color: var(--branco);
+  font-family: var(--fonte-corpo); font-weight: 600; font-size: 0.88rem;
+  padding: 14px 28px; border-radius: 50px;
+  border: 1.5px solid rgba(255,255,255,0.5);
+  cursor: pointer; transition: all 0.22s;
+}
+.pascoa-cta-btn-outline:hover { background: rgba(255,255,255,0.12); border-color: #fff; }
+
+/* FOOTER */
+footer { background:var(--verde-escuro); color:rgba(255,255,255,0.6); text-align:center; padding:28px 24px; font-size:0.83rem; line-height:1.7; margin-top:auto; }
+footer strong { color:var(--verde-mint); display:block; font-size:0.95rem; margin-bottom:4px; }
+
+/* RESPONSIVE */
+@media(max-width:640px){
+.nav-wrapper { padding:0 12px; height:64px; }
+.nav-btn { font-size:0.73rem; padding:6px 8px; }
+.logo-text { font-size:0.9rem; }
+.hero { padding:60px 18px 56px; }
+thead th, tbody td { padding:12px 10px; font-size:0.8rem; }
+.destino-hero { height:240px; }
+.destino-hero-overlay { padding:22px 20px; }
+.destino-info-box { flex-direction:column; align-items:flex-start; }
+.pascoa-hero { padding:56px 18px 52px; }
+.pascoa-body { padding:40px 18px 60px; }
+.pascoa-cta-final { padding:36px 22px; }
+}
+</style>
+
+</head>
+<body>
+
+<div class="topbar">🌿 Turismo sustentável que transforma vidas e preserva o planeta</div>
+
+<header>
+<div class="nav-wrapper">
+<div class="logo" onclick="showPage('inicio')">
+<div class="logo-icon">🌿</div>
+<div class="logo-text">Horizonte Verde <span>Travel Agency</span></div>
+</div>
+<nav>
+<button class="nav-btn active" onclick="showPage('inicio')">Início</button>
+<button class="nav-btn" onclick="showPage('nacionais')">Pacotes Nacionais</button>
+<button class="nav-btn" onclick="showPage('internacionais')">Pacotes Internacionais</button>
+<button class="nav-btn" onclick="showPage('translados')">Translados</button>
+<button class="nav-btn pascoa-nav" onclick="showPage('pascoa')">🥚 Páscoa Especial</button>
+<button class="nav-btn" onclick="showPage('contato')">Contato</button>
+</nav>
+</div>
+</header>
+
+<!-- INÍCIO -->
+<section class="page active" id="page-inicio">
+
+  <!-- BANNER PÁSCOA (topo da home) -->
+  <div class="pascoa-banner-strip" onclick="showPage('pascoa')">
+    <div class="pascoa-strip-inner">
+      <span class="pascoa-strip-badge">🥚 Edição Especial</span>
+      <span class="pascoa-strip-text"><strong>Páscoa dos Sonhos em Bonito, MS</strong> — 5 dias de natureza e aventura · A partir de $755</span>
+      <span class="pascoa-strip-cta">Ver pacote →</span>
+    </div>
+  </div>
+
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="hero-badge">🌍 Turismo Sustentável &amp; Responsável</div>
+      <h1>Horizonte Verde <em>Travel</em></h1>
+      <p class="hero-slogan">"Viajar, descobrir e preservar."</p>
+      <button class="hero-cta" onclick="showPage('nacionais')">Explorar Pacotes →</button>
+    </div>
+  </div>
+  <div class="section-container">
+    <p class="section-label">Quem somos</p>
+    <h2 class="section-title">Viagens que fazem a diferença</h2>
+    <p class="section-subtitle">A Horizonte Verde Travel é uma agência comprometida com experiências turísticas que respeitam o meio ambiente, valorizam a cultura local e geram impacto positivo nas comunidades.</p>
+    <div class="pillar-grid">
+      <div class="pillar-card"><div class="pillar-icon">🌱</div><h3>Turismo Sustentável</h3><p>Roteiros planejados com foco na preservação ambiental e na redução da pegada de carbono.</p></div>
+      <div class="pillar-card"><div class="pillar-icon">🤝</div><h3>Geração de Renda</h3><p>Parceiros locais, guias da comunidade e hospedagens familiares garantem que o dinheiro fique onde é gerado.</p></div>
+      <div class="pillar-card"><div class="pillar-icon">🏺</div><h3>Cultura Local</h3><p>Valorizamos a gastronomia, o artesanato e as tradições de cada destino com experiências autênticas.</p></div>
+      <div class="pillar-card"><div class="pillar-icon">🧭</div><h3>Turismo Responsável</h3><p>Educamos viajantes sobre boas práticas, respeitando fauna, flora e moradores locais.</p></div>
+    </div>
+  </div>
+  <div class="mission-banner">
+    <p>"Nossa missão é transformar cada viagem em uma <strong>experiência significativa</strong> — para quem viaja, para quem recebe e para o planeta que todos compartilhamos."</p>
+  </div>
+</section>
+
+<!-- PACOTES NACIONAIS -->
+<section class="page packages-page" id="page-nacionais">
+  <div class="packages-header">
+    <p class="section-label">Explore o Brasil</p>
+    <h2 class="section-title">Pacotes Nacionais</h2>
+    <p>Clique em um destino para conhecer os pontos turísticos incluídos no pacote</p>
+  </div>
+  <div class="packages-body">
+    <div class="table-wrapper">
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>Destino</th><th>Hotel</th><th>Categoria</th><th>Tour Incluído</th><th>Preço</th></tr></thead>
+          <tbody>
+            <tr>
+              <td class="td-destino"><span class="destino-link" onclick="showDestino('rio')">🏖️ Rio de Janeiro <span class="arrow">›</span></span></td>
+              <td class="td-hotel">Windsor Copacabana</td><td><span class="estrelas">★★★★</span></td>
+              <td><span class="tour-tag">Cristo Redentor + Pão de Açúcar</span></td>
+              <td class="td-preco">$480</td>
+            </tr>
+            <tr>
+              <td class="td-destino"><span class="destino-link" onclick="showDestino('foz')">🌊 Foz do Iguaçu <span class="arrow">›</span></span></td>
+              <td class="td-hotel">Recanto Cataratas Resort</td><td><span class="estrelas">★★★★</span></td>
+              <td><span class="tour-tag">Cataratas + Parque das Aves</span></td>
+              <td class="td-preco">$520</td>
+            </tr>
+            <tr>
+              <td class="td-destino"><span class="destino-link" onclick="showDestino('gramado')">🍫 Gramado <span class="arrow">›</span></span></td>
+              <td class="td-hotel">Laghetto Stilo</td><td><span class="estrelas">★★★★</span></td>
+              <td><span class="tour-tag">Tour Gastronômico</span></td>
+              <td class="td-preco">$550</td>
+            </tr>
+            <tr>
+              <td class="td-destino"><span class="destino-link" onclick="showDestino('salvador')">🥁 Salvador <span class="arrow">›</span></span></td>
+              <td class="td-hotel">Wish Hotel da Bahia</td><td><span class="estrelas">★★★★★</span></td>
+              <td><span class="tour-tag">Tour Histórico Cultural</span></td>
+              <td class="td-preco">$650</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PACOTES INTERNACIONAIS -->
+<section class="page packages-page" id="page-internacionais">
+  <div class="packages-header">
+    <p class="section-label">Explore o Mundo</p>
+    <h2 class="section-title">Pacotes Internacionais</h2>
+    <p>Clique em um destino para conhecer os pontos turísticos incluídos no pacote</p>
+  </div>
+  <div class="packages-body">
+    <div class="table-wrapper">
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>Destino</th><th>Hotel</th><th>Categoria</th><th>Tour Incluído</th><th>Preço</th></tr></thead>
+          <tbody>
+            <tr>
+              <td class="td-destino"><span class="destino-link" onclick="showDestino('baires')">🇦🇷 Buenos Aires <span class="arrow">›</span></span></td>
+              <td class="td-hotel">Hilton Buenos Aires</td><td><span class="estrelas">★★★★★</span></td>
+              <td><span class="tour-tag">City Tour + Show de Tango</span></td>
+              <td class="td-preco">$780</td>
+            </tr>
+            <tr>
+              <td class="td-destino"><span class="destino-link" onclick="showDestino('santiago')">🇨🇱 Santiago <span class="arrow">›</span></span></td>
+              <td class="td-hotel">Sheraton Santiago</td><td><span class="estrelas">★★★★★</span></td>
+              <td><span class="tour-tag">Cordilheira dos Andes + Vinícolas</span></td>
+              <td class="td-preco">$820</td>
+            </tr>
+            <tr>
+              <td class="td-destino"><span class="destino-link" onclick="showDestino('paris')">🇫🇷 Paris <span class="arrow">›</span></span></td>
+              <td class="td-hotel">Pullman Paris Tour Eiffel</td><td><span class="estrelas">★★★★</span></td>
+              <td><span class="tour-tag">Torre Eiffel + Museu do Louvre</span></td>
+              <td class="td-preco">$1.950</td>
+            </tr>
+            <tr>
+              <td class="td-destino"><span class="destino-link" onclick="showDestino('orlando')">🇺🇸 Orlando <span class="arrow">›</span></span></td>
+              <td class="td-hotel">Universal Cabana Bay Resort</td><td><span class="estrelas">★★★★</span></td>
+              <td><span class="tour-tag">Parques Disney e Universal</span></td>
+              <td class="td-preco">$1.700</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DETALHE DO DESTINO -->
+<section class="page" id="page-destino">
+  <div class="destino-back-bar">
+    <button class="back-btn" id="back-btn">← Voltar aos Pacotes</button>
+  </div>
+  <div id="destino-content"></div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     PÁSCOA ESPECIAL
+═══════════════════════════════════════ -->
+<section class="page" id="page-pascoa">
+
+  <!-- Hero -->
+  <div class="pascoa-hero">
+    <div class="pascoa-hero-inner">
+      <div class="pascoa-edicao-badge"><span></span> Edição Limitada · Páscoa 2026</div>
+      <h1>Páscoa dos <em>Sonhos</em><br>em Bonito, MS</h1>
+      <p class="pascoa-hero-sub">Celebre a Páscoa mergulhado na natureza mais pura do Brasil. Rios de cristal, fauna exuberante e uma experiência que vai muito além do chocolate.</p>
+      <div class="pascoa-destino-pill">🗺️ Bonito · Mato Grosso do Sul · Brasil</div>
+      <div class="pascoa-hero-pills">
+        <div class="p-pill"><span class="p-pill-dot"></span> 5 dias / 4 noites</div>
+        <div class="p-pill"><span class="p-pill-dot"></span> 17 a 21 de abril</div>
+        <div class="p-pill"><span class="p-pill-dot"></span> Vagas limitadas</div>
+        <div class="p-pill"><span class="p-pill-dot"></span> Tudo incluso</div>
+      </div>
+      <div class="pascoa-hero-cta-row">
+        <button class="pascoa-btn-hero" onclick="showPage('contato')">Garantir minha vaga →</button>
+        <div class="pascoa-hero-preco">
+          <div class="pascoa-hero-preco-label">A partir de</div>
+          <div class="pascoa-hero-preco-val">R$ 3.890 <small>/ pessoa</small></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Barra de urgência -->
+  <div class="urgencia-bar">
+    <span style="font-size:1rem;">⏳</span>
+    <span class="urgencia-bar-text"><strong>Oferta por tempo limitado.</strong> Preço válido até 15 de março ou enquanto houver vagas.</span>
+    <span class="urgencia-vagas">🔥 Turma A: apenas 4 vagas</span>
+  </div>
+
+  <!-- Corpo -->
+  <div class="pascoa-body">
+
+    <!-- DESTINO -->
+    <p class="pascoa-section-label">O destino</p>
+    <h2 class="pascoa-section-title">Por que Bonito para a Páscoa?</h2>
+    <p class="pascoa-destino-texto">Bonito, no coração do Mato Grosso do Sul, é um dos destinos de ecoturismo mais premiados do mundo. Nas festas de Páscoa, o clima ameno e os rios de águas cristalinas criam uma atmosfera de renovação e encantamento — perfeita para quem quer se reconectar com a natureza e com as pessoas que ama.</p>
+
+    <div class="pascoa-info-grid">
+      <div class="pascoa-info-card"><span class="pascoa-info-icon">🏊</span><div class="pascoa-info-card-title">Rios cristalinos</div><div class="pascoa-info-card-desc">Flutuação no Rio da Prata e snorkeling no Rio Sucuri com peixes coloridos</div></div>
+      <div class="pascoa-info-card"><span class="pascoa-info-icon">🦜</span><div class="pascoa-info-card-title">Fauna única</div><div class="pascoa-info-card-desc">Arara-azul, capivaras, onças e mais de 300 espécies de aves no Pantanal</div></div>
+      <div class="pascoa-info-card"><span class="pascoa-info-icon">🌊</span><div class="pascoa-info-card-title">Cachoeiras</div><div class="pascoa-info-card-desc">Cachoeira do Formoso e trilhas na Lagoa Misteriosa, de beleza incomparável</div></div>
+      <div class="pascoa-info-card"><span class="pascoa-info-icon">🍴</span><div class="pascoa-info-card-title">Gastronomia local</div><div class="pascoa-info-card-desc">Pintado e pacu frescos, sobremesas regionais e jantar especial de Páscoa</div></div>
+    </div>
+
+    <hr class="pascoa-section-divider">
+
+    <!-- DATAS -->
+    <p class="pascoa-section-label">Datas disponíveis</p>
+    <h2 class="pascoa-section-title">Escolha sua turma</h2>
+
+    <div class="pascoa-datas-grid">
+      <div class="pascoa-data-card destaque">
+        <div class="pascoa-data-top">
+          <span class="pascoa-data-nome">Turma A</span>
+          <span class="pascoa-data-badge-pop">Mais procurada</span>
+        </div>
+        <div class="pascoa-data-datas">17 – 21 de abril</div>
+        <div class="pascoa-data-periodo">Quinta-feira a segunda-feira</div>
+        <div class="pascoa-data-vagas">⚡ Apenas 4 vagas restantes</div>
+      </div>
+      <div class="pascoa-data-card">
+        <div class="pascoa-data-top">
+          <span class="pascoa-data-nome">Turma B</span>
+        </div>
+        <div class="pascoa-data-datas">18 – 22 de abril</div>
+        <div class="pascoa-data-periodo">Sexta-feira a terça-feira</div>
+        <div class="pascoa-data-vagas pascoa-data-vagas-ok">8 vagas disponíveis</div>
+      </div>
+    </div>
+
+    <hr class="pascoa-section-divider">
+
+    <!-- INCLUSO -->
+    <p class="pascoa-section-label">O pacote inclui</p>
+    <h2 class="pascoa-section-title">Tudo resolvido para você</h2>
+
+    <div class="pascoa-incluso-grid">
+      <div class="pascoa-incluso-item"><div class="pascoa-check">✓</div><span>Passagem aérea (ida e volta) — SP, RJ ou BH</span></div>
+      <div class="pascoa-incluso-item"><div class="pascoa-check">✓</div><span>Transfer aeroporto ↔ hotel ↔ atrações</span></div>
+      <div class="pascoa-incluso-item"><div class="pascoa-check">✓</div><span>4 noites em pousada 4 estrelas com café da manhã</span></div>
+      <div class="pascoa-incluso-item"><div class="pascoa-check">✓</div><span>Flutuação no Rio da Prata com snorkel</span></div>
+      <div class="pascoa-incluso-item"><div class="pascoa-check">✓</div><span>Visita à Gruta do Lago Azul</span></div>
+      <div class="pascoa-incluso-item"><div class="pascoa-check">✓</div><span>Trilha e cachoeira no Parque das Cachoeiras</span></div>
+      <div class="pascoa-incluso-item"><div class="pascoa-check">✓</div><span>Jantar especial de Páscoa + kit de ovos artesanais</span></div>
+      <div class="pascoa-incluso-item"><div class="pascoa-check">✓</div><span>Guia local especializado em ecoturismo</span></div>
+      <div class="pascoa-incluso-item"><div class="pascoa-check">✓</div><span>Seguro viagem completo incluso</span></div>
+      <div class="pascoa-incluso-item"><div class="pascoa-check">✓</div><span>Suporte 24h da equipe Horizonte Verde</span></div>
+    </div>
+
+    <hr class="pascoa-section-divider">
+
+    <!-- PREÇO + CTA -->
+    <p class="pascoa-section-label">Investimento</p>
+    <h2 class="pascoa-section-title">Valor e condições de pagamento</h2>
+
+    <div class="pascoa-preco-wrapper">
+      <div class="pascoa-preco-card">
+        <div class="pascoa-preco-main">
+          <span class="pascoa-preco-num"> $755</span>
+          <span class="pascoa-preco-suffix">por pessoa</span>
+        </div>
+        <p class="pascoa-preco-detalhe">Valor em quarto duplo. Suplemento single: + R$ 780.<br>Pacote família (2 adultos + 2 crianças até 12 anos): R$ 12.500.</p>
+        <div class="pascoa-parcelas">
+          <span style="font-size:1.1rem">💳</span>
+          <span>Parcelamento em até <strong>12x de R$ 324</strong> no cartão sem juros</span>
+        </div>
+        <div class="pascoa-pix">
+          <strong>💰 5% de desconto no Pix à vista</strong> — ou seja, R$ 3.696 por pessoa
+        </div>
+        <p class="pascoa-sinal">Reserva com apenas <strong>R$ 500 de sinal</strong> · Saldo 30 dias antes da viagem</p>
+      </div>
+
+      <div class="pascoa-cta-card">
+        <div class="pascoa-urgencia-cta">
+          <span style="font-size:1.1rem">⏳</span>
+          <div class="pascoa-urgencia-cta-text"><strong>Não deixe para depois.</strong> As vagas da Turma A estão quase esgotadas. Quem reserva primeiro garante o melhor preço.</div>
+        </div>
+        <button class="pascoa-btn-reservar" onclick="showPage('contato')">Garantir minha vaga na Páscoa →</button>
+        <button class="pascoa-btn-consultor" onclick="showPage('contato')">Falar com um consultor antes</button>
+        <p class="pascoa-cta-info">Cancelamento gratuito até 45 dias antes · Remarcação sem multa</p>
+      </div>
+    </div>
+
+    <hr class="pascoa-section-divider">
+
+    <!-- DIFERENCIAIS -->
+    <p class="pascoa-section-label">Por que escolher a Horizonte Verde</p>
+    <h2 class="pascoa-section-title">Nossos diferenciais neste pacote</h2>
+
+    <div class="pascoa-dif-grid">
+      <div class="pascoa-dif-card"><span class="pascoa-dif-icon">🌱</span><div><div class="pascoa-dif-title">Turismo 100% sustentável</div><div class="pascoa-dif-desc">Pousadas com certificação ambiental e pegada de carbono compensada.</div></div></div>
+      <div class="pascoa-dif-card"><span class="pascoa-dif-icon">🤝</span><div><div class="pascoa-dif-title">Guias da comunidade</div><div class="pascoa-dif-desc">Moradores de Bonito como guias — geram renda local e oferecem vivências autênticas.</div></div></div>
+      <div class="pascoa-dif-card"><span class="pascoa-dif-icon">🛡️</span><div><div class="pascoa-dif-title">Cancele sem stress</div><div class="pascoa-dif-desc">Cancelamento gratuito até 45 dias antes. Remarcação flexível sem multa.</div></div></div>
+      <div class="pascoa-dif-card"><span class="pascoa-dif-icon">🥚</span><div><div class="pascoa-dif-title">Experiência de Páscoa</div><div class="pascoa-dif-desc">Decoração temática, caça ao ovo na natureza e kit artesanal incluídos.</div></div></div>
+      <div class="pascoa-dif-card"><span class="pascoa-dif-icon">📦</span><div><div class="pascoa-dif-title">Tudo incluso de verdade</div><div class="pascoa-dif-desc">Passagem, hotel, passeios, guia, seguro — você só cuida de curtir.</div></div></div>
+      <div class="pascoa-dif-card"><span class="pascoa-dif-icon">📞</span><div><div class="pascoa-dif-title">Suporte real, 24/7</div><div class="pascoa-dif-desc">WhatsApp direto com nossa equipe durante toda a sua viagem.</div></div></div>
+    </div>
+
+    <!-- CTA FINAL -->
+    <div class="pascoa-cta-final">
+      <div class="pascoa-cta-final-inner">
+        <h2>Sua Páscoa mais especial começa aqui</h2>
+        <p>Vagas limitadas, data próxima. Não deixe essa memória escapar — reserve agora e garanta a experiência que sua família merece.</p>
+        <div class="pascoa-cta-final-btns">
+          <button class="pascoa-cta-btn-white" onclick="showPage('contato')">Reservar agora →</button>
+          <button class="pascoa-cta-btn-outline" onclick="showPage('contato')">Falar pelo WhatsApp</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- TRANSLADOS -->
+<section class="page" id="page-translados">
+  <div class="translados-header">
+    <p class="section-label">Logística Completa</p>
+    <h2 class="section-title">Nossos Translados</h2>
+    <p>Do ponto de partida ao destino com conforto, segurança e pontualidade</p>
+  </div>
+  <div class="translados-body">
+    <div class="translado-card">
+      <div class="translado-icon-wrap">✈️</div>
+      <h3>Translado Aéreo</h3>
+      <ul>
+        <li>Voos nacionais para todos os destinos do Brasil</li>
+        <li>Voos internacionais com as melhores companhias</li>
+        <li>Parcerias com LATAM, Gol, Azul e companhias internacionais</li>
+        <li>Emissão e suporte de bilhetes aéreos</li>
+        <li>Assistência em cancelamentos e remarcações</li>
+      </ul>
+    </div>
+    <div class="translado-card">
+      <div class="translado-icon-wrap">🚐</div>
+      <h3>Translado Terrestre</h3>
+      <ul>
+        <li>Vans executivas climatizadas e confortáveis</li>
+        <li>Transporte aeroporto → hotel e hotel → aeroporto</li>
+        <li>Ônibus turísticos para passeios em grupo</li>
+        <li>Motoristas treinados e locais experientes</li>
+        <li>Pontualidade e rastreamento em tempo real</li>
+      </ul>
+    </div>
+    <div class="translado-card">
+      <div class="translado-icon-wrap">⛵</div>
+      <h3>Translado Marítimo</h3>
+      <ul>
+        <li>Passeios de barco e lancha em destinos costeiros</li>
+        <li>Transporte para ilhas e arquipélagos</li>
+        <li>Schooners e catamarãs para grupos</li>
+        <li>Embarcações com equipamentos de segurança certificados</li>
+        <li>Guias especializados em fauna e flora marinha</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CONTATO -->
+<section class="page contato-page" id="page-contato">
+  <div class="contato-header">
+    <p class="section-label">Fale Conosco</p>
+    <h2 class="section-title">Entre em Contato</h2>
+    <p>Estamos prontos para planejar a viagem dos seus sonhos</p>
+  </div>
+  <div class="contato-body">
+    <div class="contato-card"><div class="contato-card-icon">📧</div><h3>E-mail</h3><p><a href="mailto:contato.horizonteverde@gmail.com">contato.horizonteverde<br>@gmail.com</a></p></div>
+    <div class="contato-card"><div class="contato-card-icon">📞</div><h3>Telefone / WhatsApp</h3><p><a href="tel:+5511933307230">+55 11 93330-7230</a></p></div>
+    <div class="contato-card"><div class="contato-card-icon">📸</div><h3>Instagram</h3><p><a href="https://instagram.com/Horizonte.GreenTravel" target="_blank">@Horizonte.GreenTravel</a></p></div>
+  </div>
+  <div class="contato-aviso">
+    <div class="contato-aviso-inner">
+      <h3>🕐 Horário de Atendimento</h3>
+      <p>Segunda a Sexta: 09h às 18h &nbsp;|&nbsp; Sábado: 09h às 13h<br>Respondemos WhatsApp fora do horário sempre que possível.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <strong>🌿 Horizonte Verde Travel © 2026</strong>
+  Turismo sustentável e geração de renda para comunidades locais.
+</footer>
+
+<script>
+const PAGE_MAP = { inicio:0, nacionais:1, internacionais:2, translados:3, pascoa:4, contato:5 };
+let previousPage = 'nacionais';
+
+function showPage(pageId) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  const t = document.getElementById('page-' + pageId);
+  if (t) t.classList.add('active');
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  const idx = PAGE_MAP[pageId];
+  if (idx !== undefined) document.querySelectorAll('.nav-btn')[idx].classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+const DESTINOS = {
+  rio: {
+    nome: 'Rio de Janeiro', pais: 'Brasil 🇧🇷', emoji: '🏖️',
+    preco: '$480', hotel: 'Windsor Copacabana · ★★★★',
+    descricao: 'A Cidade Maravilhosa encanta com praias icônicas, morros exuberantes e uma cultura vibrante. Neste pacote você visitará dois dos pontos turísticos mais famosos do mundo, além de aproveitar a energia única do Rio.',
+    heroImg: 'https://images.unsplash.com/photo-1483729558449-99ef09a8c325?w=1200&q=80',
+    origem: 'nacionais',
+    atracoes: [
+      { nome: 'Cristo Redentor', tag: 'Patrimônio Cultural',
+        img: 'https://images.unsplash.com/photo-1544989164-31c8a9d1c829?w=700&q=80',
+        desc: 'Uma das Sete Maravilhas do Mundo Moderno, o Cristo Redentor fica no topo do Morro do Corcovado a 710 m de altitude. A estátua de 38 metros domina a paisagem carioca e oferece vista panorâmica de 360° — das praias à Baía de Guanabara.' },
+      { nome: 'Pão de Açúcar', tag: 'Natureza & Mirante',
+        img: 'https://images.unsplash.com/photo-1619546952812-520e98064a52?w=700&q=80',
+        desc: 'O bondinho do Pão de Açúcar leva os visitantes até 396 metros em dois trajetos de teleférico. Do cume, a vista abrange a Baía de Guanabara, as praias de Copacabana e Ipanema e o horizonte do Atlântico — especialmente mágica ao pôr do sol.' }
+    ]
+  },
+  foz: {
+    nome: 'Foz do Iguaçu', pais: 'Brasil 🇧🇷', emoji: '🌊',
+    preco: '$520', hotel: 'Recanto Cataratas Resort · ★★★★',
+    descricao: 'Lar de uma das maiores maravilhas naturais do planeta, Foz do Iguaçu oferece contato com a natureza selvagem que nenhuma fotografia consegue capturar completamente.',
+    heroImg: 'https://images.unsplash.com/photo-1589308078059-be1415eab4c3?w=1200&q=80',
+    origem: 'nacionais',
+    atracoes: [
+      { nome: 'Cataratas do Iguaçu', tag: 'Patrimônio Natural UNESCO',
+        img: 'https://images.unsplash.com/photo-1565117131035-8de877da4a93?w=700&q=80',
+        desc: 'Com 275 quedas d\'água em quase 3 km de extensão, as Cataratas são reconhecidas pela UNESCO como Patrimônio Natural da Humanidade. A Trilha das Cataratas aproxima os visitantes das quedas com vista deslumbrante e névoa refrescante.' },
+      { nome: 'Parque das Aves', tag: 'Fauna & Flora',
+        img: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=700&q=80',
+        desc: 'Vizinho ao Parque Nacional do Iguaçu, o Parque das Aves abriga mais de 1.400 aves de cerca de 150 espécies — tucanos, araras, flamingos e papagaios. Os aviários de imersão permitem caminhar entre as aves em ambiente florestal preservado.' }
+    ]
+  },
+  gramado: {
+    nome: 'Gramado', pais: 'Brasil 🇧🇷', emoji: '🍫',
+    preco: '$550', hotel: 'Laghetto Stilo · ★★★★',
+    descricao: 'Encravada na Serra Gaúcha, Gramado é um cenário europeu em pleno Brasil. Com arquitetura enxaimel, chocolates artesanais e gastronomia premiada, a cidade encanta em qualquer estação do ano.',
+    heroImg: 'https://images.unsplash.com/photo-1601238428854-7e5c19f30be7?w=1200&q=80',
+    origem: 'nacionais',
+    atracoes: [
+      { nome: 'Tour Gastronômico', tag: 'Gastronomia & Cultura',
+        img: 'https://images.unsplash.com/photo-1551782450-a2132b4ba21d?w=700&q=80',
+        desc: 'O tour percorre os melhores restaurantes, cafeterias e chocolaterias de Gramado. Degustações de fondue, chocolates artesanais, vinhos da Serra Gaúcha e a clássica cuca colonial compõem essa experiência pelos sabores únicos da cidade.' },
+      { nome: 'Lago Negro & Centro Histórico', tag: 'Passeio Paisagístico',
+        img: 'https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?w=700&q=80',
+        desc: 'O Lago Negro é o cartão-postal de Gramado: rodeado por hortênsias e ciprestes, é perfeito para passeio de pedalinhos. O centro histórico em estilo bávaro completa a atmosfera única, com arquitetura enxaimel e lojas de artesanato local.' }
+    ]
+  },
+  salvador: {
+    nome: 'Salvador', pais: 'Brasil 🇧🇷', emoji: '🥁',
+    preco: '$650', hotel: 'Wish Hotel da Bahia · ★★★★★',
+    descricao: 'Salvador é o berço da cultura afro-brasileira, cidade de fé, música e cor. O Pelourinho, seu centro histórico colonial, é Patrimônio Mundial da UNESCO e palco de uma das expressões culturais mais ricas do Brasil.',
+    heroImg: 'https://images.unsplash.com/photo-1583422409516-2895a77efded?w=1200&q=80',
+    origem: 'nacionais',
+    atracoes: [
+      { nome: 'Pelourinho', tag: 'Patrimônio UNESCO',
+        img: 'https://images.unsplash.com/photo-1598887142487-3c854d51eabb?w=700&q=80',
+        desc: 'O centro histórico de Salvador é um mosaico de casarões coloniais coloridos, igrejas barrocas e ladeiras de paralelepípedo. O Pelourinho pulsa com música ao vivo, capoeira nas ruas e culinária baiana — acarajé, moqueca e vatapá — em cada esquina.' },
+      { nome: 'Igreja do Bonfim', tag: 'Cultura & Fé',
+        img: 'https://images.unsplash.com/photo-1570168007204-dfb528c6958f?w=700&q=80',
+        desc: 'A Basílica do Senhor do Bonfim é o símbolo maior da devoção baiana, famosa pelas fitas coloridas atadas nos pulsos dos visitantes como pedido de graças. A lavagem das escadarias em janeiro é uma das festas mais emocionantes do Brasil.' }
+    ]
+  },
+  baires: {
+    nome: 'Buenos Aires', pais: 'Argentina 🇦🇷', emoji: '🇦🇷',
+    preco: '$780', hotel: 'Hilton Buenos Aires · ★★★★★',
+    descricao: 'A "Paris da América do Sul" seduz com arquitetura art déco, bairros boêmios, carnes incomparáveis e o tango apaixonante. Buenos Aires é uma metrópole que vive intensamente — do café da manhã até as madrugadas dançantes.',
+    heroImg: 'https://images.unsplash.com/photo-1589909202802-8f4aadce1849?w=1200&q=80',
+    origem: 'internacionais',
+    atracoes: [
+      { nome: 'City Tour Buenos Aires', tag: 'Cultura & História',
+        img: 'https://images.unsplash.com/photo-1612294037637-ec328d0e075e?w=700&q=80',
+        desc: 'O city tour percorre os bairros icônicos: La Boca com o colorido Caminito, San Telmo com feiras de antiguidades, Recoleta com seu famoso cemitério e o elegante Palermo com restaurantes e boutiques. Um panorama completo da cultura portenha.' },
+      { nome: 'Show de Tango', tag: 'Arte & Espetáculo',
+        img: 'https://images.unsplash.com/photo-1547153760-18fc86324498?w=700&q=80',
+        desc: 'O tango, declarado Patrimônio Cultural Imaterial da Humanidade pela UNESCO, é a alma de Buenos Aires. O show inclui jantar com culinária argentina e espetáculo ao vivo com dançarinos profissionais, músicos e cantor em uma das milongas mais tradicionais.' }
+    ]
+  },
+  santiago: {
+    nome: 'Santiago', pais: 'Chile 🇨🇱', emoji: '🇨🇱',
+    preco: '$820', hotel: 'Sheraton Santiago · ★★★★★',
+    descricao: 'Santiago combina modernidade urbana com a majestade natural dos Andes ao fundo. A capital chilena é porta de entrada para paisagens únicas — da Cordilheira aos vales vinícolas que produzem alguns dos melhores vinhos do mundo.',
+    heroImg: 'https://images.unsplash.com/photo-1524398797-81aee3dd5a25?w=1200&q=80',
+    origem: 'internacionais',
+    atracoes: [
+      { nome: 'Cordilheira dos Andes', tag: 'Natureza & Aventura',
+        img: 'https://images.unsplash.com/photo-1612512836264-5e58fab88bf0?w=700&q=80',
+        desc: 'A apenas 50 km do centro de Santiago, a Cordilheira dos Andes oferece cenários de tirar o fôlego. A excursão inclui visita ao Valle Nevado, picos acima de 5.000 m, observação da neve permanente e a experiência única de contemplar a maior cadeia montanhosa das Américas.' },
+      { nome: 'Tour pelas Vinícolas', tag: 'Enoturismo',
+        img: 'https://images.unsplash.com/photo-1506377585622-bedcbb027afc?w=700&q=80',
+        desc: 'O Vale do Maipo é o coração da viticultura chilena. O tour visita duas vinícolas premiadas com passeio pelas videiras, visita à adega e degustação de Cabernet Sauvignon, Carménère e Sauvignon Blanc — os varietais mais premiados do Chile.' }
+    ]
+  },
+  paris: {
+    nome: 'Paris', pais: 'França 🇫🇷', emoji: '🇫🇷',
+    preco: '$1.950', hotel: 'Pullman Paris Tour Eiffel · ★★★★',
+    descricao: 'A Cidade Luz é o destino mais visitado do mundo por uma razão: nenhuma outra cidade concentra tanta beleza, história, arte e gastronomia. Paris encanta pela primeira vez e cativa para sempre.',
+    heroImg: 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=1200&q=80',
+    origem: 'internacionais',
+    atracoes: [
+      { nome: 'Torre Eiffel', tag: 'Ícone Mundial',
+        img: 'https://images.unsplash.com/photo-1511739001486-6bfe10ce785f?w=700&q=80',
+        desc: 'Construída em 1889 para a Exposição Universal, a Torre Eiffel com 330 metros é o monumento mais visitado do mundo. O pacote inclui subida ao 2º andar com vista panorâmica sobre os Champs-Élysées, o Rio Sena e os telhados inconfundíveis de Paris.' },
+      { nome: 'Museu do Louvre', tag: 'Arte & História',
+        img: 'https://images.unsplash.com/photo-1565799577-39d82a95a70c?w=700&q=80',
+        desc: 'O maior museu de arte do mundo abriga mais de 35.000 obras, incluindo a Mona Lisa, a Vênus de Milo e a Vitória de Samotrácia. Com guia especializado em português, o tour percorre as galerias mais importantes com contexto histórico aprofundado.' }
+    ]
+  },
+  orlando: {
+    nome: 'Orlando', pais: 'Estados Unidos 🇺🇸', emoji: '🇺🇸',
+    preco: '$1.700', hotel: 'Universal Cabana Bay Resort · ★★★★',
+    descricao: 'Capital mundial dos parques temáticos, Orlando oferece diversão sem limite para todas as idades. Com mais de 30 parques na região, a cidade da Flórida é um universo de entretenimento, magia e adrenalina que nenhum outro destino consegue replicar.',
+    heroImg: 'https://images.unsplash.com/photo-1516410529446-2c777cb7366d?w=1200&q=80',
+    origem: 'internacionais',
+    atracoes: [
+      { nome: 'Parques Disney', tag: 'Magia & Entretenimento',
+        img: 'https://images.unsplash.com/photo-1575783970733-1aaedde1db74?w=700&q=80',
+        desc: 'O complexo Walt Disney World inclui quatro parques: Magic Kingdom, EPCOT, Hollywood Studios e Animal Kingdom. O pacote inclui 2 dias de acesso, com destaques para o Castelo da Cinderela, Star Wars: Galaxy\'s Edge e os espetáculos noturnos com fogos de artifício.' },
+      { nome: 'Universal Orlando', tag: 'Aventura & Adrenalina',
+        img: 'https://images.unsplash.com/photo-1541480601022-2308c0f02487?w=700&q=80',
+        desc: 'O Universal Orlando abriga o Wizarding World of Harry Potter, Jurassic World, Transformers e muito mais. O pacote inclui 1 dia nos dois parques — Universal Studios Florida e Islands of Adventure — com acesso a todas as atrações principais.' }
+    ]
+  }
+};
+
+function showDestino(id) {
+  const d = DESTINOS[id];
+  if (!d) return;
+  previousPage = d.origem;
+  document.getElementById('back-btn').onclick = () => showPage(previousPage);
+  document.getElementById('destino-content').innerHTML = `
+    <div class="destino-hero">
+      <img src="${d.heroImg}" alt="${d.nome}" onerror="this.style.background='#2d6e47'"/>
+      <div class="destino-hero-overlay">
+        <h2>${d.emoji} ${d.nome}</h2>
+        <p>${d.pais} &nbsp;·&nbsp; ${d.hotel}</p>
+      </div>
+    </div>
+    <div class="destino-body">
+      <p class="destino-intro">${d.descricao}</p>
+      <p class="section-label">Atrações incluídas no pacote</p>
+      <div class="atracao-grid">
+        ${d.atracoes.map(a => `
+          <div class="atracao-card">
+            <img class="atracao-img" src="${a.img}" alt="${a.nome}" onerror="this.style.background='#a8d5b5'"/>
+            <div class="atracao-body">
+              <span class="atracao-tag">${a.tag}</span>
+              <h3>${a.nome}</h3>
+              <p>${a.desc}</p>
+            </div>
+          </div>
+        `).join('')}
+      </div>
+      <div class="destino-info-box">
+        <div class="dib-item"><span class="dib-label">Destino</span><span class="dib-value">${d.nome}</span></div>
+        <div class="dib-item"><span class="dib-label">Hotel</span><span class="dib-value">${d.hotel.split(' · ')[0]}</span></div>
+        <div class="dib-item"><span class="dib-label">Preço por pessoa</span><span class="dib-value">${d.preco}</span></div>
+        <button class="dib-cta" onclick="showPage('contato')">Solicitar este pacote →</button>
+      </div>
+    </div>
+  `;
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page-destino').classList.add('active');
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
+
+</body>
+</html>
